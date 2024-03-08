@@ -22,30 +22,43 @@ Output: [0,1]
 
 '''
 
-
+# The brute force way
+# Runtime Complexity: O(n²)
+# Space Complexity: O(1)
 def twoSumBF(nums, target):
     for i in range (len(nums)):
         for k in range(i + 1, len(nums)):
             tmp = nums[i] + nums[k]
             if tmp == target: return [i, k]    
+            
+def twoSumBF(nums, target):
+    for i in range (len(nums)):
+        for k in range(i + 1, len(nums)):
+            tmp = nums[i] + nums[k]
+            if tmp == target: return [i, k]   
 
 
+
+# Some Test cases
 if __name__ == "__main__":
-    nums1 = [2, 7, 11, 15]
-    target1 = 9
+    nums = [2, 7, 11, 15]
+    target = 9
     print("Example 1:")
-    print("Input:", nums1, target1)
-    print("Output:", twoSumBF(nums1, target1))
+    print("Input:", nums, target)
+    print("Output:", twoSumBF(nums, target))
+    print("Expected: [0, 1]")
 
-    nums2 = [3, 2, 4]
-    target2 = 6
+    nums = [3, 2, 4]
+    target = 6
     print("\nExample 2:")
-    print("Input:", nums2, target2)
-    print("Output:", twoSumBF(nums2, target2))
+    print("Input:", nums, target)
+    print("Output:", twoSumBF(nums, target))
+    print("Expected: [1, 2]")
 
-    nums3 = [3, 3]
-    target3 = 6
+    nums = [3, 3]
+    target = 6
     print("\nExample 3:")
-    print("Input:", nums3, target3)
-    print("Output:", twoSumBF(nums3, target3))
+    print("Input:", nums, target)
+    print("Output:", twoSumBF(nums, target))
+    print("Expected: [0, 1]")
     
