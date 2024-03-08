@@ -31,12 +31,17 @@ def twoSumBF(nums, target):
             tmp = nums[i] + nums[k]
             if tmp == target: return [i, k]    
             
-def twoSumBF(nums, target):
-    for i in range (len(nums)):
-        for k in range(i + 1, len(nums)):
-            tmp = nums[i] + nums[k]
-            if tmp == target: return [i, k]   
-
+# The hashmap way
+# Runtime Complexity: O(n)
+# Space Complexity: O(n)
+def twoSumHM(nums, target):
+    num_dict = {}
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in num_dict:
+            return [num_dict[complement], i]
+        num_dict[num] = i
+    
 
 
 # Some Test cases
