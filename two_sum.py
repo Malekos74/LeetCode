@@ -20,12 +20,28 @@ Example 3:
 Input: nums = [3,3], target = 6
 Output: [0,1]
 
+
+
+Constraints:
+2 <= nums.length <= 10^4
+-10^9 <= nums[i] <= 10^9
+-10^9 <= target <= 10^9
+Only one valid answer exists.
+ 
+
+Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?
+
 '''
 
 # The brute force way
 # Runtime Complexity: O(n²)
 # Space Complexity: O(1)
 def twoSumBF(nums, target):
+    """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
     for i in range (len(nums)):
         for k in range(i + 1, len(nums)):
             tmp = nums[i] + nums[k]
@@ -35,6 +51,11 @@ def twoSumBF(nums, target):
 # Runtime Complexity: O(n)
 # Space Complexity: O(n)
 def twoSumHM(nums, target):
+    """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
     num_dict = {}
     for i, num in enumerate(nums):
         complement = target - num
@@ -42,7 +63,6 @@ def twoSumHM(nums, target):
             return [num_dict[complement], i]
         num_dict[num] = i
     
-
 
 # Some Test cases
 if __name__ == "__main__":
