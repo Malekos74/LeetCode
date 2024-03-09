@@ -32,7 +32,9 @@ s consists of English letters, digits, symbols and spaces.
 def lengthOfLongestSubstring(s):
     max_len = 0
     tmp = 0
+    # Dict with keys as the characters of s and values as the position in s
     used = {}
+    # Tells us which characters we need in the dict
     start_index = 0
     
     for i in range(len(s)):
@@ -50,23 +52,23 @@ def lengthOfLongestSubstring(s):
 
 # Some Test cases
 if __name__ == "__main__":
-    # s = "abcabcbb"
-    # print("Example 1:")
-    # print("Input:", s)
-    # print("Output:", lengthOfLongestSubstring(s))
-    # print("Expected: 3\n")
+    s = "abcabcbb"
+    print("Example 1:")
+    print("Input:", s)
+    print("Output:", lengthOfLongestSubstring(s))
+    print("Expected: 3\n")
     
-    # s = "bbbbb"
-    # print("Example 2:")
-    # print("Input:", s)
-    # print("Output:", lengthOfLongestSubstring(s))
-    # print("Expected: 1\n")
+    s = "bbbbb"
+    print("Example 2:")
+    print("Input:", s)
+    print("Output:", lengthOfLongestSubstring(s))
+    print("Expected: 1\n")
     
-    # s = "pwwkew"
-    # print("Example 3:")
-    # print("Input:", s)
-    # print("Output:", lengthOfLongestSubstring(s))
-    # print("Expected: 3\n")
+    s = "pwwkew"
+    print("Example 3:")
+    print("Input:", s)
+    print("Output:", lengthOfLongestSubstring(s))
+    print("Expected: 3\n")
     
     s = "dvdf"
     print("Example 4:")
