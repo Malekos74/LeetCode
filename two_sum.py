@@ -41,7 +41,8 @@ def twoSumBF(nums, target):
         :type nums: List[int]
         :type target: int
         :rtype: List[int]
-        """
+    """
+    
     for i in range (len(nums)):
         for k in range(i + 1, len(nums)):
             tmp = nums[i] + nums[k]
@@ -55,7 +56,8 @@ def twoSumHM(nums, target):
         :type nums: List[int]
         :type target: int
         :rtype: List[int]
-        """
+    """
+    
     num_dict = {}
     for i, num in enumerate(nums):
         complement = target - num
