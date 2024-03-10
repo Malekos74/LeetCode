@@ -34,23 +34,21 @@ Constraints:
 
 # The brute force way
 # Runtime Complexity: O(n³)
-# Space Complexity: O(1)
+# Space Complexity: O(3n)
 def threeSumBF(nums):
     """
-        :type nums: List[int]
-        :rtype: List[List[int]]
+    :type nums: List[int]
+    :rtype: List[List[int]]
     """
-    result = []
-    for i in range (0, len(nums)):
-        for j in range (i + 1, len(nums)):
-            for k in range (j + 1, len(nums)):
-                if i != j and i != k and k != j and nums[i] + nums[j] + nums[k] == 0 : 
-                    result.append([nums[i], nums[j], nums[k]])
-    
-    # Convert list of lists to set of tuples to remove duplicates
-    new_result = set(tuple(sorted(sublist)) for sublist in result)
-    # Convert set of tuples back to list of lists
-    new_result = [list(sublist) for sublist in new_result]
+    result = set()
+    for i in range(len(nums)):
+        for j in range(i + 1, len(nums)):
+            for k in range(j + 1, len(nums)):
+                if i != j and i != k and k != j and nums[i] + nums[j] + nums[k] == 0:
+                    result.add(tuple(sorted([nums[i], nums[j], nums[k]])))
+
+    # Convert set of tuples to list of lists
+    new_result = [list(sublist) for sublist in result]
     return new_result
     
 # Some Test cases
