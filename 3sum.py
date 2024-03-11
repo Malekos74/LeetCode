@@ -52,6 +52,7 @@ def threeSumBF(nums):
     new_result = [list(sublist) for sublist in result]
     return new_result
 
+
 # Faster than bruteforce
 def twoSum(nums, target):
     """
@@ -90,6 +91,18 @@ def threeSum(nums):
     # Convert set of tuples to list of lists
     new_result = [list(sublist) for sublist in result]
     return new_result
+
+
+'''
+Sort the given array in non-decreasing order.
+Loop through the array from index 0 to n-1.
+For each iteration, set the target as -nums[i].
+Set two pointers, j=i+1 and k=n-1.
+While j<k, check if nums[j]+nums[k]==target.
+If yes, add the triplet {nums[i], nums[j], nums[k]} to the result and move j to the right and k to the left.
+If no, move either j or k based on the comparison of nums[j]+nums[k] with target.
+To avoid duplicate triplets, skip the iterations where nums[i]==nums[i-1] and also skip the iterations where nums[j]==nums[j-1] or nums[k]==nums[k+1].
+'''
 
 
 # Some Test cases
