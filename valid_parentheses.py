@@ -27,34 +27,63 @@ Constraints:
 1 <= s.length <= 10^34
 s consists of parentheses only '()[]{}'.
 '''
+import random
 
-# The brute force way
-# Runtime Complexity: O(n²)
-# Space Complexity: O(1)
+def generate_brackets_string():
+    brackets = ['(', ')', '{', '}', '[', ']']
+    num_brackets = random.randint(1, 20)  # You can adjust the range of the random number of brackets generated
+    brackets_string = ''.join(random.choices(brackets, k=num_brackets))
+    return brackets_string
+
+# ([)})[])[
 def isValid(s):
     """
         :type s: str
         :rtype: bool
     """
-    return False
+    counter_round_brackets = 0
+    counter_square_brackets = 0
+    counter_squiggly_brackets = 0
+    
+    for x in s:
+        
+        match x:
+            case '(':
+                counter_round_brackets += 1
+            case ')':
+                counter_round_brackets -= 1
+            case '[':
+                counter_square_brackets += 1
+            case ']':
+                counter_square_brackets -= 1
+            case '{':
+                counter_squiggly_brackets += 1
+            case '}':
+                counter_squiggly_brackets -= 1
+                
+        if counter_round_brackets < 0 or counter_square_brackets < 0 or counter_squiggly_brackets < 0: return False
+            
+    return counter_round_brackets == 0 and counter_square_brackets == 0 and counter_squiggly_brackets == 0
     
 # Some Test cases
 if __name__ == "__main__":
-    s = "()"
-    print("\nExample 1:")
-    print("Input:", s)
-    print("Output:", isValid(s))
-    print("Expected: true")
-
-    s = "()[]{}"
-    print("\nExample 2:")
-    print("Input:", s)
-    print("Output:", isValid(s))
-    print("Expected: true")
     
-    s = "(]"
-    print("\nExample 3:")
-    print("Input:", s)
-    print("Output:", isValid(s))
-    print("Expected: false")
+    print(generate_brackets_string())
+    # s = "()"
+    # print("\nExample 1:")
+    # print("Input:", s)
+    # print("Output:", isValid(s))
+    # print("Expected: True")
+
+    # s = "()[]{}"
+    # print("\nExample 2:")
+    # print("Input:", s)
+    # print("Output:", isValid(s))
+    # print("Expected: True")
+    
+    # s = "(]"
+    # print("\nExample 3:")
+    # print("Input:", s)
+    # print("Output:", isValid(s))
+    # print("Expected: False")
     
