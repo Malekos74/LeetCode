@@ -41,49 +41,57 @@ def isValid(s):
         :type s: str
         :rtype: bool
     """
-    counter_round_brackets = 0
-    counter_square_brackets = 0
-    counter_squiggly_brackets = 0
+    stack = []
     
-    for x in s:
-        
-        match x:
-            case '(':
-                counter_round_brackets += 1
+    for c in s:
+        match c:
+            case '(' | '[' | '{':
+                stack.append(c)
             case ')':
-                counter_round_brackets -= 1
-            case '[':
-                counter_square_brackets += 1
+                if len(stack) == 0 or stack[-1] != '(': return False
+                else: stack.pop()
             case ']':
-                counter_square_brackets -= 1
-            case '{':
-                counter_squiggly_brackets += 1
+                if len(stack) == 0 or stack[-1] != '[': return False
+                else: stack.pop()
             case '}':
-                counter_squiggly_brackets -= 1
-                
-        if counter_round_brackets < 0 or counter_square_brackets < 0 or counter_squiggly_brackets < 0: return False
-            
-    return counter_round_brackets == 0 and counter_square_brackets == 0 and counter_squiggly_brackets == 0
+                if len(stack) == 0 or stack[-1] != '{': return False
+                else: stack.pop()
+    
+    return len(stack) == 0
     
 # Some Test cases
 if __name__ == "__main__":
     
-    print(generate_brackets_string())
-    # s = "()"
-    # print("\nExample 1:")
-    # print("Input:", s)
-    # print("Output:", isValid(s))
-    # print("Expected: True")
+    s = "()"
+    print("\nExample 1:")
+    print("Input:", s)
+    print("Output:", isValid(s))
+    print("Expected: True")
 
-    # s = "()[]{}"
-    # print("\nExample 2:")
-    # print("Input:", s)
-    # print("Output:", isValid(s))
-    # print("Expected: True")
+    s = "()[]{}"
+    print("\nExample 2:")
+    print("Input:", s)
+    print("Output:", isValid(s))
+    print("Expected: True")
     
-    # s = "(]"
-    # print("\nExample 3:")
-    # print("Input:", s)
-    # print("Output:", isValid(s))
-    # print("Expected: False")
+    s = "(]"
+    print("\nExample 3:")
+    print("Input:", s)
+    print("Output:", isValid(s))
+    print("Expected: False")
     
+    # Invalid examples
+    invalid_strings = [
+        ("({})[", False),  
+        ("[(])", False),   
+        ("{[}", False),    
+        ("{[()]}", True), 
+        ("([{}))", False), 
+        ("{[()]", False),  
+    ]
+
+    for idx, (s, expected) in enumerate(invalid_strings, start=3):
+        print("\nExample", idx, ":")
+        print("Input:", s)
+        print("Output:", isValid(s))
+        print("Expected:", expected)
