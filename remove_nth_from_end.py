@@ -29,8 +29,9 @@ class ListNode(object):
         self.val = val
         self.next = next
         
-def printLinkedList(head):
+def linkedListString(head):
     current_node = head
+    
     linked_list_str = '['
     while current_node:
         linked_list_str += str(current_node.val)
@@ -38,7 +39,8 @@ def printLinkedList(head):
             linked_list_str += ','
         current_node = current_node.next
     linked_list_str += ']'
-    print(linked_list_str)
+    
+    return linked_list_str
     
     
 def removeNthFromEnd(head, n):
@@ -47,7 +49,7 @@ def removeNthFromEnd(head, n):
         :type n: int
         :rtype: ListNode
     """
-    pass
+    return head
 
 # Some Test cases
 if __name__ == "__main__":
@@ -63,23 +65,15 @@ if __name__ == "__main__":
     node2 = ListNode(2)
     head3 = ListNode(1, node2)
     
-    
-    printLinkedList(head1)
-    printLinkedList(head2)
-    printLinkedList(head3)
-    
-    # # Invalid examples
-    # input = [
-    #     ("({})[", False),  
-    #     ("[(])", False),   
-    #     ("{[}", False),    
-    #     ("{[()]}", True), 
-    #     ("([{}))", False), 
-    #     ("{[()]", False),  
-    # ]
+    # Examples
+    input = [
+        (head1, 2, [1,2,3,5]),
+        (head2, 1, []),
+        (head3, 1, [1])
+    ]
 
-    # for idx, (head, n, expected) in enumerate(input):
-    #     print("\nExample", idx, ":")
-    #     print("Input:", head, n)
-    #     print("Output:", removeNthFromEnd(head, n))
-    #     print("Expected:", expected)
+    for idx, (head, n, expected) in enumerate(input):
+        print("\nExample", idx, ":")
+        print("Input:", linkedListString(head), n)
+        print("Output:", linkedListString(removeNthFromEnd(head, n)))
+        print("Expected:", expected)
