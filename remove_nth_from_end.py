@@ -36,20 +36,42 @@ def linkedListString(head):
     while current_node:
         linked_list_str += str(current_node.val)
         if current_node.next:
-            linked_list_str += ','
+            linked_list_str += ', '
         current_node = current_node.next
     linked_list_str += ']'
     
     return linked_list_str
     
-    
-def removeNthFromEnd(head, n):
+# The brute force way
+def removeNthFromEndBF(head, n):
     """
         :type head: ListNode
         :type n: int
         :rtype: ListNode
     """
+    # Get length of linked list
+    length = 0
+    curr = head
+    while curr:
+        length += 1
+        curr = curr.next
+    
+    # Index of the element to remove
+    ind = length - n
+  
+    if length != 1:
+        # Traverse the list until element and remove it
+        curr = head
+        for i in range(ind):
+            if i == ind - 1:
+                curr.next = curr.next.next
+            curr = curr.next   
+    else:
+        head = None
+    
     return head
+            
+        
 
 # Some Test cases
 if __name__ == "__main__":
@@ -75,5 +97,5 @@ if __name__ == "__main__":
     for idx, (head, n, expected) in enumerate(input):
         print("\nExample", idx, ":")
         print("Input:", linkedListString(head), n)
-        print("Output:", linkedListString(removeNthFromEnd(head, n)))
+        print("Output:", linkedListString(removeNthFromEndBF(head, n)))
         print("Expected:", expected)
