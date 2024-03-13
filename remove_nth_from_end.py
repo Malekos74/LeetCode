@@ -73,6 +73,46 @@ def removeNthFromEndBF(head, n):
         head = None
     
     return head
+
+
+def reverseLinkedList(head):
+    prev = None
+    current = head 
+    
+    while current is not None: 
+        next = current.next
+        current.next = prev 
+        prev = current 
+        current = next
+        
+    head = prev
+    
+    return head
+
+def removeNthFromEndReverse(head, n):
+    """
+        :type head: ListNode
+        :type n: int
+        :rtype: ListNode
+    """
+    # Reverse the linked list
+    head = reverseLinkedList(head)
+    
+    # Remove the nth node from the end
+    prev = None
+    curr = head
+    for _ in range(n - 1):
+        prev = curr
+        curr = curr.next
+    if prev:
+        prev.next = curr.next
+    else:
+        head = head.next
+    
+    # Reverse the linked list again
+    head = reverseLinkedList(head)
+    
+    return head
             
         
 
@@ -104,5 +144,5 @@ if __name__ == "__main__":
     for idx, (head, n, expected) in enumerate(input):
         print("\nExample", idx, ":")
         print("Input:", linkedListString(head), n)
-        print("Output:", linkedListString(removeNthFromEndBF(head, n)))
+        print("Output:", linkedListString(removeNthFromEndReverse(head, n)))
         print("Expected:", expected)
