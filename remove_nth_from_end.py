@@ -60,12 +60,15 @@ def removeNthFromEndBF(head, n):
     ind = length - n
   
     if length != 1:
-        # Traverse the list until element and remove it
-        curr = head
-        for i in range(ind):
-            if i == ind - 1:
-                curr.next = curr.next.next
-            curr = curr.next   
+        if ind == 0:
+            head = head.next
+        else:
+            # Traverse the list until element and remove it
+            curr = head
+            for i in range(ind):
+                if i == ind - 1:
+                    curr.next = curr.next.next
+                curr = curr.next   
     else:
         head = None
     
@@ -87,11 +90,15 @@ if __name__ == "__main__":
     node2 = ListNode(2)
     head3 = ListNode(1, node2)
     
+    node2 = ListNode(2)
+    head4 = ListNode(1, node2)
+    
     # Examples
     input = [
         (head1, 2, [1,2,3,5]),
         (head2, 1, []),
-        (head3, 1, [1])
+        (head3, 1, [1]),
+        (head4, 2, [2])
     ]
 
     for idx, (head, n, expected) in enumerate(input):
