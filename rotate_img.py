@@ -34,8 +34,8 @@ def rotate(matrix):
         for i in range(n):
             row.append(matrix[i][j])
         row.reverse()
-        rotated_matrix.append(row.copy())
-        row.clear()
+        rotated_matrix.append(row[:])
+        row = []
         
     matrix = rotated_matrix
     return matrix
@@ -60,10 +60,14 @@ if __name__ == "__main__":
                [12,6,8,9],
                [16,7,10,11]]
     
+    matrix3 = []
+    output3 = []
+    
     # Examples
     input = [
         (matrix1, output1),
-        (matrix2, output2)
+        (matrix2, output2),
+        (matrix3, output3)
     ]
 
     for idx, (matrix, expected) in enumerate(input):
