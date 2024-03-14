@@ -20,23 +20,45 @@ n == matrix.length == matrix[i].length
 -1000 <= matrix[i][j] <= 1000
 '''
 
+# With use of a help matrix
 def rotate(matrix):
     """
         :type matrix: List[List[int]]
         :rtype: None Do not return anything, modify matrix in-place instead.
     """
+    n = len(matrix)
+    row = []
+    rotated_matrix = []
     
+    for j in range(n):
+        for i in range(n):
+            row.append(matrix[i][j])
+        row.reverse()
+        rotated_matrix.append(row.copy())
+        row.clear()
+        
+    matrix = rotated_matrix
     return matrix
         
 
 # Some Test cases
 if __name__ == "__main__":
     
-    matrix1 = [[1,2,3],[4,5,6],[7,8,9]]
-    output1 = [[7,4,1],[8,5,2],[9,6,3]]
+    matrix1 = [[1,2,3],
+               [4,5,6],
+               [7,8,9]]
+    output1 = [[7,4,1],
+               [8,5,2],
+               [9,6,3]]
     
-    matrix2 = [[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]
-    output2 = [[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]
+    matrix2 = [[5,1,9,11],
+               [2,4,8,10],
+               [13,3,6,7],
+               [15,14,12,16]]
+    output2 = [[15,13,2,5],
+               [14,3,4,1],
+               [12,6,8,9],
+               [16,7,10,11]]
     
     # Examples
     input = [
