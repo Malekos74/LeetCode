@@ -39,6 +39,24 @@ def rotate(matrix):
         
     matrix = rotated_matrix
     return matrix
+
+def rotateInPlace(matrix):
+    """
+        :type matrix: List[List[int]]
+        :rtype: None Do not return anything, modify matrix in-place instead.
+    """
+    n = len(matrix)
+    
+    # Transpose the matrix in place
+    for i in range(n):
+        for j in range(i+1, n):
+            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+    
+    # Reverse each row in place
+    for i in range(n):
+        matrix[i].reverse()
+    
+    return matrix
         
 
 # Some Test cases
@@ -73,5 +91,5 @@ if __name__ == "__main__":
     for idx, (matrix, expected) in enumerate(input):
         print("\nExample", idx, ":")
         print("Input:", matrix)
-        print("Output:", rotate(matrix))
+        print("Output:", rotateInPlace(matrix))
         print("Expected:", expected)
