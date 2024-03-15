@@ -42,13 +42,27 @@ def linkedListString(head):
     
     return linked_list_str
     
+def mergeTwoListsHelper(node1, node2):
+    if node1 is None:
+        return node2
+    elif node2 is None:
+        return node1
+    else:
+        if node1.val <= node2.val:
+            merged_node = ListNode(node1.val)
+            merged_node.next = mergeTwoListsHelper(node1.next, node2)
+        else:
+            merged_node = ListNode(node2.val)
+            merged_node.next = mergeTwoListsHelper(node1, node2.next)
+        return merged_node
+# Mege two lists recursively
 def mergeTwoLists(list1, list2):
     """
     :type list1: Optional[ListNode]
     :type list2: Optional[ListNode]
     :rtype: Optional[ListNode]
     """
-    return list1
+    return mergeTwoListsHelper(list1, list2)
 
 
 # Some Test cases
