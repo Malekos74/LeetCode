@@ -21,10 +21,20 @@ s and t consist of lowercase English letters.
 
 Follow up: What if the inputs contain Unicode characters? How would you adapt your solution to such a case?
 '''
+import string
+
 
 def isAnagram(s, t):
-    return False
+    alphabet = string.ascii_lowercase
+    dict1 = {x : 0 for x in alphabet}
+    dict2 = {x : 0 for x in alphabet}
+    
+    for x in s:
+        dict1[x] += 1
+    for x in t:
+        dict2[x] += 1
         
+    return dict1 == dict2
 
 # Some Test cases
 if __name__ == "__main__":
