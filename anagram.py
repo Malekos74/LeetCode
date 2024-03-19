@@ -36,6 +36,22 @@ def isAnagram(s, t):
         
     return dict1 == dict2
 
+def isAnagramOptimized(s, t):
+    if len(s) != len(t):
+        return False
+
+    dict = {x: 0 for x in string.ascii_lowercase}
+
+    for x in s:
+        dict[x] += 1
+
+    for x in t:
+        dict[x] -= 1
+        if dict[x] < 0:
+            return False
+
+    return True
+
 # Some Test cases
 if __name__ == "__main__":
     
