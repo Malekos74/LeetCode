@@ -23,8 +23,8 @@ Follow up: What if the inputs contain Unicode characters? How would you adapt yo
 '''
 import string
 
-
 def isAnagram(s, t):
+    # Initialize 2 dicts with the alphabet as keys and 0 as values
     alphabet = string.ascii_lowercase
     dict1 = {x : 0 for x in alphabet}
     dict2 = {x : 0 for x in alphabet}
