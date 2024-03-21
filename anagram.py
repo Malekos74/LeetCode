@@ -52,6 +52,9 @@ def isAnagramOptimized(s, t):
 
     return True
 
+def isAnagramOptimized2(s, t):
+    return sorted(s) == sorted(t)
+
 # Some Test cases
 if __name__ == "__main__":
     
@@ -64,5 +67,5 @@ if __name__ == "__main__":
     for idx, (s, t, expected) in enumerate(input):
         print("\nExample", idx, ":")
         print("Input:", s, " ", t)
-        print("Output:", isAnagram(s, t))
+        print("Output:", isAnagramOptimized2(s, t))
         print("Expected:", expected)
