@@ -32,22 +32,63 @@ def groupAnagrams(strs):
         :rtype: List[List[str]]
     """
     
-
+    '''
+      # Loop through the List[str] and group them 2 by 2
+    # for i in range (len(strs)):
+    #     for j in range (i + 1, len(strs)):
+    #         if isAnagram(strs[i], strs[j]):
+    #             exists = False
+                
+    #             for k in range(len(tmp)):
+    #                 if [strs[i], strs[j]] in tmp[k]:
+    #                     exists = True
+    #                     break
+    #                 elif strs[i] in tmp[k]:
+    #                     tmp[k].append(strs[j])
+    #                     exists = True
+    #                     break
+    #                 elif strs[j] in tmp[k]:
+    #                     tmp[k].append(strs[i])
+    #                     exists = True
+    #                     break
+                    
+    #             if not exists: tmp.append([strs[i], strs[j]])
+                
+    #         else:
+    #             exists = False
+                
+    #             for k in range(len(tmp)): 
+    #                 if strs[i] in tmp[k]:
+    #                     exists = True
+    #                     break
+                
+    #             if not exists: tmp.append([strs[i]])
+    '''
+    tmp = []
+    
+    # If input contains only one string, then return that string ina List[List[str]]
+    if len(strs) == 1:
+        return [[strs[0]]]
+    
+    # Loop through the List[str] and group them
+    for i in range(len(strs)):
+        found = False
+        for group in tmp:
+            if isAnagram(strs[i], group[0]):
+                group.append(strs[i])
+                found = True
+                break
+        if not found:
+            tmp.append([strs[i]])
+    
+    # If tmp is empty, return [['']]
+    if len(tmp) == 0: return [['']]
+    
+    
+    return tmp
+                
 def isAnagram(s, t):
-    if len(s) != len(t):
-        return False
-
-    dict = {x: 0 for x in string.ascii_lowercase}
-
-    for x in s:
-        dict[x] += 1
-
-    for x in t:
-        dict[x] -= 1
-        if dict[x] < 0:
-            return False
-
-    return True
+    return sorted(s) == sorted(t)
 
 # Some Test cases
 if __name__ == "__main__":
