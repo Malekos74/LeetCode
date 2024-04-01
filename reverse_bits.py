@@ -41,6 +41,19 @@ def reverseBits(n):
         
     return int(bString, 2)
 
+# Same as the normal reverseBits but takes an int as input
+def reverseBitsInt(n):
+    # Convert integer to binary string
+    tmp = bin(n)[2:]
+    
+    tmp = '0' * (32 - len(tmp)) + tmp 
+    
+    bString = ''
+    for i in range(32):
+        bString = tmp[i] + bString
+        
+    return int(bString, 2)
+
 # Some Test cases
 if __name__ == "__main__":
     
