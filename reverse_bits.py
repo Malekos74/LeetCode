@@ -31,7 +31,15 @@ Follow up: If this function is called many times, how would you optimize it?
 
 '''
 def reverseBits(n):
-    return n
+    tmp = str(n)
+    while len(tmp) < 32:
+        tmp = '0' + tmp
+    
+    bString = ''
+    for i in range(32):
+        bString = tmp[i] + bString
+        
+    return int(bString, 2)
 
 # Some Test cases
 if __name__ == "__main__":
