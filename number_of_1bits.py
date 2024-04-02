@@ -29,7 +29,14 @@ Follow up: If this function is called many times, how would you optimize it?
 
 '''
 def hammingWeight(n):
-    return n
+    # Convert integer to binary string
+    binStr = bin(n)[2:]
+    
+    # Convert binary string to list of integers
+    binList = [int(x) for x in binStr]
+
+    # Return the sum of the list
+    return sum(binList)
 
 # Some Test cases
 if __name__ == "__main__":
